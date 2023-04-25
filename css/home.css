@@ -1,0 +1,38 @@
+/* Main content styles */
+.main-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Slideshow styles */
+.slideshow {
+    position: relative;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: auto;
+}
+
+.active {
+    display: block;
+}
+
+/* About text styles */
+#about_text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    margin: 0 80px 0 80px;
+}
+
+#about_text h3 {
+    text-align: center;
+}
+
+.text {
+    color: #636262;
+}
