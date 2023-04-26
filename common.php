@@ -1,29 +1,34 @@
-<?php function head_tag() { ?>
+<?php function head_tag()
+{ ?>
 	<!DOCTYPE html>
 	<html lang="en">
 
 	<head>
 		<meta charset="utf-8">
 		<title> OnlineShop</title>
-		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 		<link href="./css/common.css" type="text/css" rel="stylesheet">
 		<link href="./css/home.css" type="text/css" rel="stylesheet">
+		<link href="./css/itemDescription.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="./js/home.js"></script>
+		<script type="text/javascript" src="./js/common.js"></script>
 	</head>
 <?php } ?>
 
-<?php function header_bar() { ?>
+<?php function header_bar()
+{ ?>
 	<div id="header">
 		<header>
 			<div class="header-top">
 				<div class="logo">
-					<h1>OnlineShop</h1>
+					<h1><a href="home.php">OnlineShop</a></h1>
 				</div>
 				<div class="search-bar">
 					<input type="text" placeholder="Search...">
 					<button type="submit">Search</button>
 				</div>
 				<div class="user-options">
-					<button class="login-btn">Sign In / Register</button>
+					<button id="loginBtn">Sign In / Register</button>
 				</div>
 			</div>
 			<div class="header-bottom">
@@ -36,18 +41,77 @@
 			</div>
 		</header>
 	</div>
+	<div id="loginModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div class="title-text">
+				<div class="title login">
+					Sign In
+				</div>
+				<div class="title signup">
+					Register
+				</div>
+			</div>
+			<div class="form-container">
+				<div class="slide-controls">
+					<input type="radio" name="slide" id="login" checked>
+					<input type="radio" name="slide" id="signup">
+					<label for="login" class="slide login">Sign In</label>
+					<label for="signup" class="slide signup">Register</label>
+					<div class="slider-tab"></div>
+				</div>
+				<div class="form-inner">
+					<form action="#" class="login">
+						<div class="field">
+							<input type="text" placeholder="Email Address" required>
+						</div>
+						<div class="field">
+							<input type="password" placeholder="Password" required>
+						</div>
+						<div class="pass-link">
+							<a href="#">Forgot password?</a>
+						</div>
+						<div class="field btn">
+							<div class="btn-layer"></div>
+							<input type="submit" value="Login">
+						</div>
+						<div class="signup-link">
+							Don't have an account? <a href="">Signup now</a>
+						</div>
+					</form>
+					<form action="#" class="signup">
+						<div class="field">
+							<input type="text" placeholder="Email Address" required>
+						</div>
+						<div class="field">
+							<input type="password" placeholder="Password" required>
+						</div>
+						<div class="field">
+							<input type="password" placeholder="Confirm password" required>
+						</div>
+						<div class="field btn">
+							<div class="btn-layer"></div>
+							<input type="submit" value="Signup">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <?php } ?>
 
-<?php function footer_bar() { ?>
+<?php function footer_bar()
+{ ?>
 	<footer>
 		<div class="footer-top">
 			<div class="footer-logo">
-			<h2>OnlineShop</h2>
+				<h2>OnlineShop</h2>
 			</div>
 			<div class="footer-social">
-			<a href="#"><i class="fab fa-facebook-f"></i></a>
-			<a href="#"><i class="fab fa-twitter"></i></a>
-			<a href="#"><i class="fab fa-instagram"></i></a>
+				<a href="#"><i class="fab fa-facebook-f"></i></a>
+				<a href="#"><i class="fab fa-twitter"></i></a>
+				<a href="#"><i class="fab fa-instagram"></i></a>
 			</div>
 		</div>
 		<div class="footer-middle">

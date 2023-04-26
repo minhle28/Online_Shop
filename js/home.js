@@ -1,10 +1,20 @@
-// Slideshow code
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-const slideInterval = setInterval(nextSlide, 6000);
+document.addEventListener("DOMContentLoaded", function () {
+  //Sign In and Register Popup
+  const loginBtn = document.getElementById("loginBtn");
+  const loginModal = document.getElementById("loginModal");
+  const closeBtn = document.querySelector(".close");
 
-function nextSlide() {
-  slides[currentSlide].className = "slide";
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].className = "slide active";
-}
+  loginBtn.addEventListener("click", () => {
+    loginModal.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    loginModal.style.display = "none";
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === loginModal) {
+      loginModal.style.display = "none";
+    }
+  });
+});
