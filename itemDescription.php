@@ -59,8 +59,22 @@ head_tag();
                 echo $color_select;
                 echo '</div>';
                 echo '<br>';
-                echo '<input type="hidden" name="id" value="' . $item['id'] . '">';
-                echo '<input type="submit" name="submit" value="Add to Cart">';
+                echo '<div><label for="quantity"><strong>Quantity:</strong></label><br>
+                <select id="quantity" name="quantity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10+</option>
+                </select></div><br>';
+                echo '<div class="bag-favorite-button"><input type="hidden" name="id" value="' . $item['id'] . '">';
+                echo '<input type="submit" name="submit" value="Add to Bag">';
+                echo '<button type="button" class="favorite " aria-label="Favorite 8seconds Waffle Zipup Cardigan Ivory"><span class="fa-heart far"></span></button></div>';
                 echo '</form>';
                 echo '<br><br><br>';
                 echo '<h2>Descriptions</h2><br>';
@@ -74,7 +88,6 @@ head_tag();
 
 
     <br>
-
     <?php footer_bar(); ?>
     <script type="text/javascript" src="./js/common.js"></script>
 </body>

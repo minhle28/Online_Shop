@@ -18,7 +18,7 @@ li {
     --poppins: 'Poppins', sans-serif;
     --lato: 'Lato', sans-serif;
 
-    --light: #F9F9F9;
+    --light: white;
     --blue: #3C91E6;
     --light-blue: #CFE8FF;
     --grey: #eee;
@@ -173,6 +173,15 @@ body {
     min-width: calc(60px - ((4px + 6px) * 2));
     display: flex;
     justify-content: center;
+}
+
+.logout button {
+    border: none;
+    outline: none;
+    background-color: white;
+    text-align: left;
+    width: 100%;
+    height: 100%;
 }
 
 /* SIDEBAR */

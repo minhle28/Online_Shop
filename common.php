@@ -1,3 +1,7 @@
+<?php
+	include("signup.php");
+?>
+
 <?php function head_tag()
 { ?>
 	<!DOCTYPE html>
@@ -10,8 +14,10 @@
 		<link href="./css/common.css" type="text/css" rel="stylesheet">
 		<link href="./css/home.css" type="text/css" rel="stylesheet">
 		<link href="./css/itemDescription.css" type="text/css" rel="stylesheet">
+		<link href="./css/about.css" type="text/css" rel="stylesheet">
 		<script type="text/javascript" src="./js/home.js"></script>
 		<script type="text/javascript" src="./js/common.js"></script>
+		<script type="text/javascript" src="./js/accountServer.js"></script>
 	</head>
 <?php } ?>
 
@@ -24,23 +30,31 @@
 					<h1><a href="home.php">OnlineShop</a></h1>
 				</div>
 				<div class="search-bar">
-					<input type="text" placeholder="Search...">
-					<button type="submit">Search</button>
+					<input type="text" placeholder="Search..." id="search-input">
+					<button type="submit" id="search-button">Search</button>
 				</div>
 				<div class="user-options">
 					<button id="loginBtn">Sign In / Register</button>
+					<div>
+						<a href="#"><i id="favorites" class="fas fa-heart"></i></a>
+					</div>
+					<div>
+						<a href="#"><i id="cart-link" class="fas fa-shopping-bag"></i></a>
+					</div>
 				</div>
 			</div>
 			<div class="header-bottom">
 				<ul class="nav-list">
-					<li><a href="#">All</a></li>
-					<li><a href="#">Women</a></li>
-					<li><a href="#">Men</a></li>
-					<li><a href="#">Kids</a></li>
+					<li><a href="all.php">All</a></li>
+					<li><a href="#" data-category="lady">Lady</a></li>
+					<li><a href="#" data-category="men">Men</a></li>
+					<li><a href="#" data-category="kid">Kid</a></li>
 				</ul>
 			</div>
 		</header>
 	</div>
+
+	<!-- css for this form is in -->
 	<div id="loginModal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>
@@ -63,37 +77,24 @@
 				<div class="form-inner">
 					<form action="#" class="login">
 						<div class="field">
-							<input type="text" placeholder="Email Address" required>
+							<input type="text" id='Username' placeholder="Email Address" required>
 						</div>
 						<div class="field">
-							<input type="password" placeholder="Password" required>
+							<input type="password" id='Password' placeholder="Password" required>
 						</div>
 						<div class="pass-link">
 							<a href="#">Forgot password?</a>
 						</div>
+						<span class='error-msg' id='error-msg-1'></span>
 						<div class="field btn">
 							<div class="btn-layer"></div>
-							<input type="submit" value="Login">
+							<input name='Submit' type='submit' value='Login' class='btn-input' id='login_btn' />;
 						</div>
 						<div class="signup-link">
-							Don't have an account? <a href="">Signup now</a>
+							Don't have an account? <a href="">Register now</a>
 						</div>
 					</form>
-					<form action="#" class="signup">
-						<div class="field">
-							<input type="text" placeholder="Email Address" required>
-						</div>
-						<div class="field">
-							<input type="password" placeholder="Password" required>
-						</div>
-						<div class="field">
-							<input type="password" placeholder="Confirm password" required>
-						</div>
-						<div class="field btn">
-							<div class="btn-layer"></div>
-							<input type="submit" value="Signup">
-						</div>
-					</form>
+					<?php signup(); ?>
 				</div>
 			</div>
 		</div>
@@ -118,7 +119,7 @@
 			<div class="footer-company">
 				<h3>COMPANY</h3>
 				<ul>
-					<li><a href="#">About Us</a></li>
+					<li><a href="about.php">About Us</a></li>
 					<li><a href="#">Contact</a></li>
 					<li><a href="#">Returns</a></li>
 					<li><a href="#">FAQs</a></li>

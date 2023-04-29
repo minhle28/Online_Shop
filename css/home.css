@@ -128,13 +128,41 @@
     display: inline-block;
 }
 
+#items-container .card .footer_card {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+#items-container button {
+    padding: 9px 10px 9px 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid #636262;
+    color: #636262;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    outline: none;
+    transition: all 0.25s ease-in-out;
+}
+
+#items-container button:hover {
+    border: 1px solid lightgray;
+    color: lightgray;
+    background-color: #aaa;
+}
+
+
 #items-container .card img {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-#items-container .card h2 {
+#items-container .card h3 {
+    font-weight: normal;
     margin-bottom: 5px;
 }
 
@@ -321,7 +349,7 @@ form .field input:focus::placeholder {
 }
 
 .form-inner form .pass-link {
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .form-inner form .signup-link {
@@ -338,6 +366,22 @@ form .field input:focus::placeholder {
 .form-inner form .pass-link a:hover,
 .form-inner form .signup-link a:hover {
     text-decoration: underline;
+}
+
+.error-msg {
+	display: block;
+	line-height: 1.2;
+	text-align: center;
+    justify-content: center;
+    align-items: center;
+	margin: 10px 0 10px 0;
+	color: red;
+    background-color: rgb(253, 203, 203);
+    border-radius: 3px;
+}
+
+.error-msg p {
+	padding: 3px;
 }
 
 form .btn {

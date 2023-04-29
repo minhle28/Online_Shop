@@ -53,8 +53,13 @@ header {
     background-color: #ff3e00;
 }
 
+.user-options {
+    display: inline-flex;
+}
+
 .user-options button {
     padding: 10px;
+    margin: 0 10px 0 10px;
     background-color: transparent;
     border: 1px solid #ff3e00;
     color: #ff3e00;
@@ -85,6 +90,22 @@ header {
 .user-options button:hover::before {
     transform-origin: center bottom;
     transform: scaleY(1);
+}
+
+.user-options div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-options i {
+    font-size: 26px;
+    margin: 0 10px 0 10px;
+    color: #636262;
+}
+
+.user-options i:hover{
+    color: #ff3e00;
 }
 
 
