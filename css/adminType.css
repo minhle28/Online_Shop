@@ -1,0 +1,131 @@
+#type-container {
+    align-items: center;
+}
+
+#type-container table {
+    width: 85%;
+    border-collapse: collapse;
+}
+
+#type-container th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+#type-container th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#type-container tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Button styles */
+#type-container .edit {
+    padding: 10px 12px 10px 12px;
+    margin: 0 5px 0 5px;
+    background-color: transparent;
+    border: 1px solid #0a06ff;
+    color: #0459f8;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    outline: none;
+    transition: all 0.25s ease-in-out;
+}
+
+#type-container .edit:hover {
+    border: 1px solid #0a06ff;
+    color: rgb(255, 255, 255);
+    background-color: #7e7cff;
+}
+
+#type-container .delete {
+    padding: 10px 12px 10px 12px;
+    margin: 0 5px 0 5px;
+    background-color: transparent;
+    border: 1px solid #ff0606;
+    color: #f80404;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+    outline: none;
+    transition: all 0.25s ease-in-out;
+}
+
+#type-container .delete:hover {
+    border: 1px solid rgb(255, 3, 3);
+    color: rgb(255, 255, 255);
+    background-color: #fa5050;
+}
+
+
+/*Popup Type Form*/
+.popupType {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 40%;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.popupType label {
+    font-weight: bold;
+}
+
+.popupType input {
+    background-color: #f2f2f2;
+    border: none;
+    color: black;
+    font-size: 16px;
+    padding: 12px 20px;
+    width: 100%;
+}
+
+.popupType #name {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+.popupType textarea {
+    height: 150px;
+}
+
+.popupType button[type="submit"] {
+    float: right;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popupType button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.popupType #close-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.popupType button:hover {
+    background-color: #c82333;
+}
