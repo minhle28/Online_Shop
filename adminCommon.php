@@ -6,12 +6,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+        <link href='./css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="./css/admin.css">
+		<link href="./css/adminType.css" type="text/css" rel="stylesheet">
         <link href="./css/adminProduct.css" type="text/css" rel="stylesheet">
-        <link href="./css/manageUser.css" type="text/css" rel="stylesheet">
         <script type="text/javascript" src="./js/adminProduct.js"></script>
-        <!--<script type="text/javascript" src="./js/logoutServer.js"></script>-->
         <title>Admin Panel</title>
     </head>
 <?php } ?>
@@ -22,8 +21,8 @@
 { ?>
     <!-- SIDEBAR -->
     <section id="sidebar">
-        <a href="#" class="brand">
-            <span class="text">Admin</span>
+        <a href="all.php" class="brand">
+            <span class="text" style="font-family:'Times New Roman', Times, serif;">ONLINESHOP</span>
         </a>
         <ul class="side-menu top">
             <li>
@@ -33,9 +32,15 @@
                 </a>
             </li>
             <li>
-                <a href="adminProduct.php">
+                <a href="adminProducts.php">
                     <i class='bx bxs-shopping-bag-alt'></i>
-                    <span class="text">Product</span>
+                    <span class="text">Products</span>
+                </a>
+            </li>
+			<li>
+                <a href="adminTypes.php">
+                    <i class='bx bxs-shopping-bag-alt'></i>
+                    <span class="text">Types</span>
                 </a>
             </li>
         </ul>
@@ -47,9 +52,9 @@
                 </a>
             </li>
             <li>
-                <a class="logout">
+                <a href="logout.php" class="logout">
                     <i class='bx bxs-log-out-circle'></i>
-                    <button id="logout-btn" class="text">Logout</button>
+                    <span class="text">Logout</span>
                 </a>
             </li>
         </ul>

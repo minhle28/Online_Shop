@@ -1,6 +1,7 @@
 <?php
 include "common.php";
 include "itemData.php";
+session_start();
 head_tag();
 ?>
 
@@ -12,31 +13,54 @@ head_tag();
     <div class="description">
         <?php
         // Get the item ID from the URL parameter
-        $id = $_GET['id'];
-
-        // Find the item in the items array based on the ID
-        foreach ($items as $item) {
-            if ($item['id'] == $id) {
-                // Create the size and color option HTML
-                $size_options = '';
-                foreach ($item['size'] as $size) {
-                    $size_options .= '<option value="' . $size . '">' . $size . '</option>';
-                }
-                $size_select = '<select name="size">' . $size_options . '</select>';
-
-                $color_options = '';
-                foreach ($item['color'] as $color) {
-                    $color_options .= '<option value="' . $color . '">' . $color . '</option>';
-                }
-                $color_select = '<select name="color">' . $color_options . '</select>';
+        
+		require_once("connection.php");
+		$db = new config();
+		$db->config();
+		
+		$ID = $_GET["id"];
+		$rs = $db->getInfoByProductID($ID);
+		while ($row = $rs->fetch_assoc()) {
+			$nameProduct = $row["nameProduct"];
+			$descriptions = $row["descriptions"];
+			$price = $row["price"];
+			$image = $row["image"];
+			$sizeID = $row["sizeID"];
+			$colorID = $row["colorID"];
+			$typesID = $row["typesID"];
+		}
+		
+		$itemsSize = $db->getAllNameSizes();
+		$sizeIdsArray = explode(',', $sizeID);
+		$size_options = '';
+		
+		foreach ($itemsSize as $id => $name) {
+			$selected = in_array($id, $sizeIdsArray) ? 'selected' : '';	
+			if ($selected) {
+				$size_options .= '<option value="' . $id . '">' . $name . '</option>';
+			}
+		}
+		$size_select = '<select name="size">' . $size_options . '</select>';
+		
+		$itemsColor = $db->getAllNameColors();
+		$colorIdsArray = explode(',', $colorID);
+		$color_options = '';
+		
+		foreach ($itemsColor as $id => $name) {
+			$selected = in_array($id, $colorIdsArray) ? 'selected' : '';	
+			if ($selected) {
+				$color_options .= '<option value="' . $id . '">' . $name . '</option>';
+			}
+		}
+		$color_select = '<select name="color">' . $color_options . '</select>';
 
                 // Create the item description HTML
-                $image = '<img src="' . $item['image'] . '" alt="' . $item['name'] . '">';
-                $name = '<h2>' . $item['name'] . '</h2>';
-                $price = '<p>$' . number_format($item['price'], 2) . '</p>';
+                $image = '<img src="' . $image . '" alt="' . $nameProduct . '">';
+                $name = '<h2>' . $nameProduct . '</h2>';
+                $price = '<p>$' . number_format($price, 2) . '</p>';
                 $size_label = '<label><strong>Size:</strong></label>';
                 $color_label = '<label><strong>Color:</strong></label>';
-                $description = '<p>' . $item['description'] . '</p>';
+                $description = '<p>' . $descriptions . '</p>';
 
                 // Display the item description HTML with size and color dropdowns
                 echo '<div class="item-description">';
@@ -72,7 +96,7 @@ head_tag();
                   <option value="9">9</option>
                   <option value="10">10+</option>
                 </select></div><br>';
-                echo '<div class="bag-favorite-button"><input type="hidden" name="id" value="' . $item['id'] . '">';
+                echo '<div class="bag-favorite-button"><input type="hidden" name="id" value="' . $ID . '">';
                 echo '<input type="submit" name="submit" value="Add to Bag">';
                 echo '<button type="button" class="favorite " aria-label="Favorite 8seconds Waffle Zipup Cardigan Ivory"><span class="fa-heart far"></span></button></div>';
                 echo '</form>';
@@ -81,8 +105,6 @@ head_tag();
                 echo $description;
                 echo '</div>';
                 echo '</div>';
-            }
-        }
         ?>
     </div>
 

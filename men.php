@@ -8,7 +8,7 @@ head_tag();
 	$db = new config();
 	$db->config();
 	
-	$items = $db->getAllNameProducts();
+	$items = $db->getAllNameProductsByType(1);
 ?>
 
 <body>
@@ -18,7 +18,7 @@ head_tag();
     <br><br>
     <div id="items-text">
         <div class="text">
-            <h3>All</h3>
+            <h3>Men</h3>
             <?php
             echo '<p>(' . count($items) . ' items)</p>';
             ?>
@@ -67,6 +67,3 @@ head_tag();
     <br><br><br>
 
     <?php footer_bar(); ?>
-</body>
-
-</html>

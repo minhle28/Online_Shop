@@ -1,15 +1,15 @@
 #type-container {
     align-items: center;
+    font-family: Arial, sans-serif;
 }
 
 #type-container table {
     width: 85%;
-    border-collapse: collapse;
 }
 
-#type-container th, td {
+#type-container th,
+td {
     padding: 12px;
-    text-align: left;
     border-bottom: 1px solid #ddd;
     text-align: center;
 }
@@ -24,6 +24,15 @@
 }
 
 /* Button styles */
+#type-container td {
+    white-space: nowrap;
+    background-color: #ffffff;
+}
+
+#type-container form {
+    display: inline-block;
+}
+
 #type-container .edit {
     padding: 10px 12px 10px 12px;
     margin: 0 5px 0 5px;
@@ -54,6 +63,7 @@
     position: relative;
     outline: none;
     transition: all 0.25s ease-in-out;
+    font-size: 16px;
 }
 
 #type-container .delete:hover {
@@ -128,4 +138,54 @@
 
 .popupType button:hover {
     background-color: #c82333;
+}
+
+
+/*Update Type */
+.updateType form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    width: 85%;
+}
+
+.updateType label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 16px;
+}
+
+.updateType input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.updateType button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.updateType button[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+.updateType button[name="cancelEditType"] {
+    background-color: #f44336;
+}
+
+.updateType button[name="cancelEditType"]:hover {
+    background-color: #d32f2f;
 }

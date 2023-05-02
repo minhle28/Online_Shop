@@ -1,6 +1,11 @@
 <?php
 include "adminCommon.php";
 admin_head_tag();
+session_start();
+if (!isset($_SESSION['username'])) {
+	header("location:home.php");
+	exit();
+}
 ?>
 
 <body>
@@ -58,7 +63,7 @@ admin_head_tag();
 							<tr>
 								<td>
 									<img src="images/user.png">
-									<p>Cutomer 1</p>
+									<p>Minh Le</p>
 								</td>
 								<td>04-27-2023</td>
 								<td><span class="status completed">Completed</span></td>
@@ -66,7 +71,7 @@ admin_head_tag();
 							<tr>
 								<td>
 									<img src="images/user.png">
-									<p>Cutomer 2</p>
+									<p>Nhon La</p>
 								</td>
 								<td>04-27-2023</td>
 								<td><span class="status pending">Pending</span></td>
@@ -74,7 +79,7 @@ admin_head_tag();
 							<tr>
 								<td>
 									<img src="images/user.png">
-									<p>Cutomer 3</p>
+									<p>Ekram Ibrahim</p>
 								</td>
 								<td>04-28-2023</td>
 								<td><span class="status process">Process</span></td>

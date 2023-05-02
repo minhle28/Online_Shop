@@ -4,7 +4,7 @@
 		
 		function config() {
 			if (!$this->_conn) {
-				$this->_conn = mysqli_connect('localhost', 'mle38', 'mle38', 'mle38') or die ('Connection Errors!'); 
+				$this->_conn = mysqli_connect('localhost', 'nla2', 'nla2', 'nla2') or die ('Connection Errors!'); 
 				mysqli_query($this->_conn, "SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");	  
 			}	 
 		}
@@ -16,7 +16,6 @@
 		}
 	
 		function register($username, $password) {
-			echo "aaaa";
 			$sql = "INSERT INTO users(username, password) VALUES ('$username', '$password')";
 			mysqli_query($this->_conn, $sql);
 		}
@@ -28,117 +27,144 @@
 			return $row;
 		}
 		
-		function rank() {
-			$sql = "SELECT name, amount FROM users ORDER BY amount DESC limit 5";
-			$query = mysqli_query($this->_conn, $sql);		
+		function getAllNameTypes() {
+			$sql = "SELECT * FROM types ORDER BY id DESC";
+			$query = mysqli_query($this->_conn, $sql);
 			$arr = array();
-			while ($ft = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-				$arr[] = $ft;
-			}	
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = $item["nameType"];
+			}
 			return $arr;
 		}
 		
-		function getName($user) {
-			$sql = "SELECT name FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$name = $arr['name'];	
-			return $name;	
-		}		
-				
-		function getLevel($user) {
-			$sql = "SELECT level FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$lv = $arr['level'];	
-			return $lv;	
+		function checkTypes($nameType) {
+			$sql = "SELECT * FROM types WHERE nameType = '$nameType'";
+			$query = mysqli_query($this->_conn, $sql);
+			return $query;
 		}
 		
-		function upLevel($newlv, $user) {
-			$query = "UPDATE users SET level = '$newlv' WHERE username = '$user'";
+		function addType($nameType) {
+			$query = "INSERT INTO types(nameType) VALUES ('$nameType')";
 			mysqli_query($this->_conn, $query);
 		}
 		
-		function getCoin($user) {
-			$sql = "SELECT amount FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$account = $arr['amount'];	
-			return $account;	
+		function getInfoByTypeID($id) {
+			$sql = "SELECT * FROM types WHERE id = '$id'";
+			$query = mysqli_query($this->_conn, $sql);
+			return $query;
 		}
 		
-		function updateCoin($amount, $user) {
-			$sql = "UPDATE users SET amount = '$amount' WHERE username = '$user'";
-			mysqli_query($this->_conn, $sql);		
-		}
-		
-		//VIETNAMESE DICE
-		function getLevelVNDice($user) {
-			$sql = "SELECT lv1 FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$lv = $arr['lv1'];	
-			return $lv;	
-		}
-		
-		function updateLevelVNDice($lv, $user) {
-			$query = "UPDATE users SET lv1 = '$lv' WHERE username = '$user'";
+		function updateType($id, $nameType) {
+			$query = "UPDATE types SET nameType = '$nameType' WHERE id = '$id'";
 			mysqli_query($this->_conn, $query);
 		}
 		
-		//CHINESE DICE
-		function getLevelCNDice($user) {
-			$sql = "SELECT lv2 FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$lv = $arr['lv2'];	
-			return $lv;	
-		}
-		
-		function updateLevelCNDice($lv, $user) {
-			$query = "UPDATE users SET lv2 = '$lv' WHERE username = '$user'";
+		function deleteType($id) {
+			$query = "DELETE FROM types WHERE id = '$id'";
 			mysqli_query($this->_conn, $query);
 		}
 		
-		//CARD
-		function getLevelCard($user) {
-			$sql = "SELECT lv3 FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$lv = $arr['lv3'];	
-			return $lv;	
+		function getAllNameProducts() {
+			$sql = "SELECT * FROM products ORDER BY id DESC";
+			$query = mysqli_query($this->_conn, $sql);
+			$arr = array();
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = array(
+					"id" => $item["id"],
+					"nameProduct" => $item["nameProduct"],
+					"descriptions" => $item["descriptions"],
+					"price" => $item["price"],
+					"image" => $item["image"],
+					"sizeID" => $item["sizeID"],
+					"colorID" => $item["colorID"],
+					"typesID" => $item["typesID"]
+				);
+			}
+			return $arr;
 		}
 		
-		function updateLevelCard($lv, $user) {
-			$query = "UPDATE users SET lv3 = '$lv' WHERE username = '$user'";
+		function getAllNameProductsByType($id) {
+			$sql = "SELECT * FROM products WHERE typesID = '$id'";
+			$query = mysqli_query($this->_conn, $sql);
+			$arr = array();
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = array(
+					"id" => $item["id"],
+					"nameProduct" => $item["nameProduct"],
+					"descriptions" => $item["descriptions"],
+					"price" => $item["price"],
+					"image" => $item["image"],
+					"sizeID" => $item["sizeID"],
+					"colorID" => $item["colorID"],
+					"typesID" => $item["typesID"]
+				);
+			}
+			return $arr;
+		}
+		
+		function addProduct($name, $description, $price, $image, $size, $color, $types) {
+			$query = "INSERT INTO products (nameProduct, descriptions, price, image, sizeID, colorID, typesID) VALUES ('$name', '$description', '$price', '$image', '$size', '$color', '$types')";
 			mysqli_query($this->_conn, $query);
 		}
-
-		// MATH		
-		function getLevelMath($user) {
-			$sql = "SELECT lv4 FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$lv = $arr['lv4'];	
-			return $lv;	
+		
+		function getInfoByProductID($id) {
+			$sql = "SELECT * FROM products WHERE id = '$id'";
+			$query = mysqli_query($this->_conn, $sql);
+			return $query;
 		}
 		
-		function updateLevelMath($lv, $user) {
-			$query = "UPDATE users SET lv4 = '$lv' WHERE username = '$user'";
+		function updateProduct($id, $nameProduct, $descriptions, $price, $image, $sizeID, $colorID, $typesID) {
+			$query = "UPDATE products SET nameProduct = '$nameProduct', descriptions = '$descriptions', price = '$price', image = '$image', sizeID = '$sizeID', colorID = '$colorID', typesID = '$typesID' WHERE id = '$id'";
 			mysqli_query($this->_conn, $query);
 		}
-				
-		function getWinMath($user) {
-			$sql = "SELECT winmath FROM users WHERE username = '$user'";
-			$query = mysqli_query($this->_conn, $sql);	
-			$arr = mysqli_fetch_array($query, MYSQLI_ASSOC);
-			$num = $arr['winmath'];	
-			return $num;	
+		
+		function updateProductNotImage($id, $nameProduct, $descriptions, $price, $sizeID, $colorID, $typesID) {
+			$query = "UPDATE products SET nameProduct = '$nameProduct', descriptions = '$descriptions', price = '$price', sizeID = '$sizeID', colorID = '$colorID', typesID = '$typesID' WHERE id = '$id'";
+			mysqli_query($this->_conn, $query);
 		}
 		
-		function updateWinMath($num, $user) {
-			$sql = "UPDATE users SET winmath = '$num' WHERE username = '$user'";
-			mysqli_query($this->_conn, $sql);
+		function deleteProduct($id) {
+			$query = "DELETE FROM products WHERE id = '$id'";
+			mysqli_query($this->_conn, $query);
+		}
+		
+		function getAllNameSizes() {
+			$sql = "SELECT * FROM sizes ORDER BY id DESC";
+			$query = mysqli_query($this->_conn, $sql);
+			$arr = array();
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = $item["nameSize"];
+			}
+			return $arr;
+		}
+		
+		function getAllNameColors() {
+			$sql = "SELECT * FROM colors ORDER BY id DESC";
+			$query = mysqli_query($this->_conn, $sql);
+			$arr = array();
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = $item["nameColor"];
+			}
+			return $arr;
+		}
+		
+		function searchProduct($key) {
+			$sql = "SELECT * FROM products WHERE nameProduct LIKE '%$key%'";
+			$query = mysqli_query($this->_conn, $sql);
+			$arr = array();
+			while ($item = mysqli_fetch_assoc($query)) { 
+				$arr[$item["id"]] = array(
+					"id" => $item["id"],
+					"nameProduct" => $item["nameProduct"],
+					"descriptions" => $item["descriptions"],
+					"price" => $item["price"],
+					"image" => $item["image"],
+					"sizeID" => $item["sizeID"],
+					"colorID" => $item["colorID"],
+					"typesID" => $item["typesID"]
+				);
+			}
+			return $arr;
 		}
 	}
 ?>

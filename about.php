@@ -1,5 +1,6 @@
 <?php
 include "common.php";
+session_start();
 head_tag();
 ?>
 

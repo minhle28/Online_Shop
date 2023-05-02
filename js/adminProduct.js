@@ -6,9 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
   addBtn.addEventListener("click", () => {
     addModal.style.display = "block";
   });
-
-  closeBtn.addEventListener("click", () => {
-    addModal.style.display = "none";
+  
+  closeBtn.addEventListener('click', () => {
+    editModal.style.display = 'none';
   });
 
 });
+
+
+
