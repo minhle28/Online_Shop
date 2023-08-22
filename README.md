@@ -28,8 +28,8 @@
 
 
 ## Features
-* Login/Registration/Logout
-* Add/Delete/Edit
+* Login / Registration / Logout
+* Add / Delete / Edit
 
 
 ## 💻 Tech Stacks
