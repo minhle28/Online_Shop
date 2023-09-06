@@ -16,6 +16,8 @@
 
 ![4](https://github.com/minhle28/Online_Shop/assets/114270231/681a6aeb-2541-42e2-bc44-1fc6dd843204)
 
+![9](https://github.com/minhle28/Online_Shop/assets/114270231/f10ccbd2-7d86-4242-a1d8-a2a5356e9136)
+
 ### --- Login & Register Pages ---
 ![5](https://github.com/minhle28/Online_Shop/assets/114270231/79f47501-7581-42d7-87e2-560f9004992d)
 
@@ -26,6 +28,9 @@
 
 ![8](https://github.com/minhle28/Online_Shop/assets/114270231/d01b101c-7644-4f37-b16c-0553825e578b)
 
+![10](https://github.com/minhle28/Online_Shop/assets/114270231/441d40de-c999-4d11-aecc-e351ab0fc718)
+
+![11](https://github.com/minhle28/Online_Shop/assets/114270231/e70c6d0f-9e82-4eee-b8b3-e67b580009d2)
 
 ## Features
 * Login / Registration / Logout
